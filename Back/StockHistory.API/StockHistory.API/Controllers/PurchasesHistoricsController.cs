@@ -22,6 +22,9 @@ namespace StockHistory.API.Controllers
         }
 
         // GET: api/PurchasesHistorics
+        /// <summary>
+        /// Get all Historics  
+        /// </summary> 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PurchasesHistoric>>> GetPurchasesHistoric()
         {
@@ -29,6 +32,10 @@ namespace StockHistory.API.Controllers
         }
 
         // GET: api/PurchasesHistorics/5
+        /// <summary>
+        /// Get a specific register.
+        /// </summary>
+        /// <param name="id"></param>   
         [HttpGet("{id}")]
         public async Task<ActionResult<PurchasesHistoric>> GetPurchasesHistoric(int id)
         {
@@ -44,7 +51,35 @@ namespace StockHistory.API.Controllers
 
         // PUT: api/PurchasesHistorics/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        // more details see https://aka.ms/RazorPagesCRUD./// <summary>
+        /// <summary>
+        /// Update a specific register.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT /purchasesHistoric
+        ///     {
+        ///       "purchasesHistoricId": 1,
+        ///       "dtNegocio": "2020-01-14T00:00:00",
+        ///       "tpNegocio": "C",
+        ///       "tpMercado": "Mercado a Vista",
+        ///       "dtPrzVcto": null,
+        ///       "codNegociacao": "XPPR11",
+        ///       "especifAtivo": "FII XP PROP CI",
+        ///       "quantidade": 1,
+        ///       "preco": 116,
+        ///       "valorTot": 116,
+        ///       "fatorCotacao": null,
+        ///       "idCorretora": 308
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="id"></param>
+        /// <param name="purchasesHistoric"></param>
+        /// <returns>A newly created TodoItem</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPurchasesHistoric(int id, PurchasesHistoric purchasesHistoric)
         {
@@ -77,6 +112,33 @@ namespace StockHistory.API.Controllers
         // POST: api/PurchasesHistorics
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        /// <summary>
+        /// Create a specific register.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /purchasesHistoric
+        ///     {
+        ///       "purchasesHistoricId": 1,
+        ///       "dtNegocio": "2020-01-14T00:00:00",
+        ///       "tpNegocio": "C",
+        ///       "tpMercado": "Mercado a Vista",
+        ///       "dtPrzVcto": null,
+        ///       "codNegociacao": "XPPR11",
+        ///       "especifAtivo": "FII XP PROP CI",
+        ///       "quantidade": 1,
+        ///       "preco": 116,
+        ///       "valorTot": 116,
+        ///       "fatorCotacao": null,
+        ///       "idCorretora": 308
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="purchasesHistoric"></param>
+        /// <returns>A newly created</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
         [HttpPost]
         public async Task<ActionResult<PurchasesHistoric>> PostPurchasesHistoric(PurchasesHistoric purchasesHistoric)
         {
@@ -87,6 +149,10 @@ namespace StockHistory.API.Controllers
         }
 
         // DELETE: api/PurchasesHistorics/5
+        /// <summary>
+        /// Deletes a specific Register.
+        /// </summary>
+        /// <param name="id"></param>  
         [HttpDelete("{id}")]
         public async Task<ActionResult<PurchasesHistoric>> DeletePurchasesHistoric(int id)
         {
