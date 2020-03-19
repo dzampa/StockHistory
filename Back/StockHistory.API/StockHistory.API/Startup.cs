@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using StockHistory.API.Data;
+using StockHistory.Data;
 using System;
 using System.IO;
 using System.Reflection;

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockHistory.API.Models
+namespace StockHistory.Models
 {
     [Table("PurchasesHistoric")]
     public class PurchasesHistoric

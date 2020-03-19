@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockHistory.API", "StockHistory.API\StockHistory.API.csproj", "{DD880D2B-E81A-46F0-89B6-4128A7D16D18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockHistory.API", "StockHistory.API\StockHistory.API.csproj", "{DD880D2B-E81A-46F0-89B6-4128A7D16D18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9D84F47F-D207-4C36-BF5B-E20B81360F71}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockHistory.Data", "StockHistory.Data\StockHistory.Data.csproj", "{156B6341-A7B8-4493-A42E-87B542CA8914}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockHistory.Models", "StockHistory.Models\StockHistory.Models.csproj", "{568CF126-F871-49FD-AFB7-42AC89EDB3F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockHistory.Views", "StockHistory.Views\StockHistory.Views.csproj", "{048CA8BE-8537-48D5-BCB5-68DF77981F72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +26,18 @@ Global
 		{DD880D2B-E81A-46F0-89B6-4128A7D16D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD880D2B-E81A-46F0-89B6-4128A7D16D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD880D2B-E81A-46F0-89B6-4128A7D16D18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156B6341-A7B8-4493-A42E-87B542CA8914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156B6341-A7B8-4493-A42E-87B542CA8914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156B6341-A7B8-4493-A42E-87B542CA8914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156B6341-A7B8-4493-A42E-87B542CA8914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{568CF126-F871-49FD-AFB7-42AC89EDB3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{568CF126-F871-49FD-AFB7-42AC89EDB3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{568CF126-F871-49FD-AFB7-42AC89EDB3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{568CF126-F871-49FD-AFB7-42AC89EDB3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048CA8BE-8537-48D5-BCB5-68DF77981F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048CA8BE-8537-48D5-BCB5-68DF77981F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048CA8BE-8537-48D5-BCB5-68DF77981F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048CA8BE-8537-48D5-BCB5-68DF77981F72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

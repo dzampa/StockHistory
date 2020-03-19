@@ -11,6 +11,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Compile Remove="Models\**" />
+    <Compile Remove="Views\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Models\**" />
+    <Content Remove="Views\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Data\**" />
+    <None Remove="Models\**" />
+    <None Remove="Views\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
@@ -24,6 +39,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StockHistory.Data\StockHistory.Data.csproj" />
   </ItemGroup>
 
 

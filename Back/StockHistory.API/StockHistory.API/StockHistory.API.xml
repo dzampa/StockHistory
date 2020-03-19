@@ -15,7 +15,7 @@
             </summary>
             <param name="id"></param>   
         </member>
-        <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.PutPurchasesHistoric(System.Int32,StockHistory.API.Models.PurchasesHistoric)">
+        <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.PutPurchasesHistoric(System.Int32,StockHistory.Models.PurchasesHistoric)">
              <summary>
              Update a specific register.
              </summary>
@@ -29,8 +29,8 @@
                    "tpNegocio": "C",
                    "tpMercado": "Mercado a Vista",
                    "dtPrzVcto": null,
-                   "codNegociacao": "XPPR11",
-                   "especifAtivo": "FII XP PROP CI",
+                   "Ticker": "XPPR11",
+                   "DescTicker": "FII XP PROP CI",
                    "quantidade": 1,
                    "preco": 116,
                    "valorTot": 116,
@@ -45,7 +45,7 @@
              <response code="201">Returns the newly created item</response>
              <response code="400">If the item is null</response> 
         </member>
-        <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.PostPurchasesHistoric(StockHistory.API.Models.PurchasesHistoric)">
+        <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.PostPurchasesHistoric(StockHistory.Models.PurchasesHistoric)">
              <summary>
              Create a specific register.
              </summary>
@@ -59,8 +59,8 @@
                    "tpNegocio": "C",
                    "tpMercado": "Mercado a Vista",
                    "dtPrzVcto": null,
-                   "codNegociacao": "XPPR11",
-                   "especifAtivo": "FII XP PROP CI",
+                   "Ticker": "XPPR11",
+                   "DescTicker": "FII XP PROP CI",
                    "quantidade": 1,
                    "preco": 116,
                    "valorTot": 116,
