@@ -4,6 +4,107 @@
         <name>StockHistory.API</name>
     </assembly>
     <members>
+        <member name="M:StockHistory.API.Controllers.ConsultTickerController.PostTickerListDatail(StockHistory.Models.Models.TickerSearch)">
+             <summary>
+             Get a specific ticker.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /purchasesHistoric
+                 {
+                   "text" : "PETR",
+                   "exchange" : null,
+                   "type" : null,
+                   "hl" : "true",
+                   "lang" : "pt",
+                   "domain" : "production"
+                 }
+            
+             </remarks>
+             <param name="tickerSearch"></param>
+             <returns>A list of Ticker</returns>
+             <response code="201">Returns a list of Ticker</response>
+             <response code="400">If the item is null</response> 
+        </member>
+        <member name="M:StockHistory.API.Controllers.ConsultTickerController.PostSearchDetail(StockHistory.Models.Models.TickerDetail)">
+             <summary>
+             Get a specific ticker.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /purchasesHistoric
+                 {
+                 "symbols": {
+                     "tickers": [
+                       "BMFBOVESPA:IVVB11"
+                     ],
+                     "query": {
+                       "types": []
+                     }
+                 },
+                   "columns": [
+                     "Recommend.All",
+                     "RSI",
+                     "RSI[1]",
+                     "Stoch.K",
+                     "Stoch.D",
+                     "Stoch.K[1]",
+                     "Stoch.D[1]",
+                     "CCI20",
+                     "CCI20[1]",
+                     "ADX",
+                     "ADX+DI",
+                     "ADX-DI",
+                     "ADX+DI[1]",
+                     "ADX-DI[1]",
+                     "AO",
+                     "AO[1]",
+                     "Mom",
+                     "Mom[1]",
+                     "MACD.macd",
+                     "MACD.signal",
+                     "Rec.Stoch.RSI",
+                     "Stoch.RSI.K",
+                     "Rec.WR",
+                     "W.R",
+                     "Rec.BBPower",
+                     "BBPower",
+                     "Rec.UO",
+                     "UO",
+                     "EMA5",
+                   	"open",
+                     "close",
+                     "volume",
+                     "SMA5",
+                     "EMA10",
+                     "SMA10",
+                     "EMA20",
+                     "SMA20",
+                     "EMA30",
+                     "SMA30",
+                     "EMA50",
+                     "SMA50",
+                     "EMA100",
+                     "SMA100",
+                     "EMA200",
+                     "SMA200",
+                     "Rec.Ichimoku",
+                     "Ichimoku.BLine",
+                     "Rec.VWMA",
+                     "VWMA",
+                     "Rec.HullMA9",
+                     "HullMA9"
+                   ]
+                 }
+            
+             </remarks>
+             <param name="tickerDetail"></param>
+             <returns>A list of Ticker</returns>
+             <response code="201">Returns a list of Ticker</response>
+             <response code="400">If the item is null</response> 
+        </member>
         <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.GetPurchasesHistoric">
             <summary>
             Get all Historics  
