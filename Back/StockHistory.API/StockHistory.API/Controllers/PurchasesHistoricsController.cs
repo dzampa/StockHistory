@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,106 @@ namespace StockHistory.API.Controllers
             }
 
             return purchasesHistoric;
+        }
+        // GET: api/PurchasesHistorics/ByTicker/IVVB11
+        /// <summary>
+        /// Get a specific register by Ticker name.
+        /// </summary>
+        /// <param name="ticker"></param>   
+        [HttpGet("ByTicker/{ticker}")]
+        public async Task<ActionResult<List<PurchasesHistoric>>> GetPurchasesHistoricByTicker(string ticker)
+        {
+            var purchasesHistoric = await _context.PurchasesHistoric.Where(x => x.Ticker.Contains(ticker)).ToListAsync();
+
+            if (purchasesHistoric == null)
+            {
+                return NotFound();
+            }
+
+            return purchasesHistoric;
+        }
+
+        // GET: api/PurchasesHistorics/TickerListTatic/IVVB11
+        /// <summary>
+        /// Get a specific register by Ticker name.
+        /// </summary>
+        /// <param name="ticker"></param>   
+        [HttpGet("ByTicker/TaticList/{ticker}")]
+        public async Task<ActionResult<List<TickerListTatic>>> GetPurchasesHistoricTickerTaticList(string ticker = null)
+        {
+            var BuyHistoric = await _context.TickerTaticHistoric.FromSqlRaw(
+                                                                         "SELECT DISTINCT " +
+                                                                         "    Ticker " +
+                                                                         "    , DescTicker " +
+                                                                         "    , sum(Quantidade) as Qnt " +
+                                                                         "    , sum(Preco * Quantidade) as Custo " +
+                                                                         "    , sum(Preco * Quantidade) / sum(Quantidade) as PrcMedio " +
+                                                                         "FROM " +
+                                                                         "    PurchasesHistoric " +
+                                                                         "WHERE " +
+                                                                         "    TpNegocio = 'C' " +
+                                                                         $"    AND Ticker LIKE '%{ticker}%' "+
+                                                                         "GROUP BY " +
+                                                                         "    Ticker " +
+                                                                         "    , DescTicker " +
+                                                                         "ORDER BY " +
+                                                                         "    Ticker"
+                                                                         ).ToListAsync();
+
+            var SellHistoric = await _context.TickerTaticHistoric.FromSqlRaw(
+                                                                         "SELECT DISTINCT " +
+                                                                         "    Ticker " +
+                                                                         "    , DescTicker " +
+                                                                         "    , sum(Quantidade) as Qnt " +
+                                                                         "    , sum(Preco * Quantidade) as Custo " +
+                                                                         "    , sum(Preco * Quantidade) / sum(Quantidade) as PrcMedio " +
+                                                                         "FROM " +
+                                                                         "    PurchasesHistoric " +
+                                                                         "WHERE " +
+                                                                         "    TpNegocio = 'V' " +
+                                                                         $"    AND Ticker LIKE '%{ticker}%' " +
+                                                                         "GROUP BY " +
+                                                                         "    Ticker " +
+                                                                         "    , DescTicker " +
+                                                                         "ORDER BY " +
+                                                                         "    Ticker"
+                                                                         ).ToListAsync();
+
+            if (BuyHistoric == null || SellHistoric == null)
+            {
+                return NotFound();
+            }
+                       
+            List<TickerListTatic> tickerListTatic = new List<TickerListTatic>();
+
+            foreach (var item in BuyHistoric)
+            {
+                TickerListTatic listTatic = new TickerListTatic();
+                int SQnt = 0;
+                decimal SCusto = 0;
+                decimal SPrcMedio = 0;
+
+                if (SellHistoric.Count > 0)
+                {
+                    SQnt = SellHistoric.First(x => x.Ticker == item.Ticker).Qnt;
+                    SCusto = SellHistoric.First(x => x.Ticker == item.Ticker).Custo;
+                    SPrcMedio = SellHistoric.First(x => x.Ticker == item.Ticker).PrcMedio;
+                }
+
+                listTatic.Ticker = item.Ticker;
+                listTatic.DescTicker = item.DescTicker;
+                listTatic.QtdeCompra = item.Qnt;
+                listTatic.QtdeVenda = SQnt;
+                listTatic.ValorCompra = Math.Round(item.Custo, 2);
+                listTatic.ValorVenda= Math.Round(SCusto, 2);
+                listTatic.ValorMedCompra = Math.Round(item.PrcMedio, 2);
+                listTatic.ValorMedVenda = Math.Round(SPrcMedio, 2);
+                listTatic.QtdeLiq = item.Qnt - SQnt;
+
+                tickerListTatic.Add(listTatic);
+            }
+
+            return tickerListTatic;
         }
 
         // PUT: api/PurchasesHistorics/5

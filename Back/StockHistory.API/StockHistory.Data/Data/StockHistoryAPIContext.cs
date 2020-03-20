@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StockHistory.Models;
 
 namespace StockHistory.Data
 {
@@ -9,6 +10,8 @@ namespace StockHistory.Data
         {
         }
 
-        public DbSet<Models.PurchasesHistoric> PurchasesHistoric { get; set; }
+        public DbSet<PurchasesHistoric> PurchasesHistoric { get; set; }
+        public DbSet<TickerTaticHistoric> TickerTaticHistoric { get; set; }
     }
+
 }

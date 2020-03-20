@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StockHistory.Models.Models;
+using StockHistory.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;

@@ -4,7 +4,7 @@
         <name>StockHistory.API</name>
     </assembly>
     <members>
-        <member name="M:StockHistory.API.Controllers.ConsultTickerController.PostTickerListDatail(StockHistory.Models.Models.TickerSearch)">
+        <member name="M:StockHistory.API.Controllers.ConsultTickerController.PostTickerListDatail(StockHistory.Models.TickerSearch)">
              <summary>
              Get a specific ticker.
              </summary>
@@ -27,7 +27,7 @@
              <response code="201">Returns a list of Ticker</response>
              <response code="400">If the item is null</response> 
         </member>
-        <member name="M:StockHistory.API.Controllers.ConsultTickerController.PostSearchDetail(StockHistory.Models.Models.TickerDetail)">
+        <member name="M:StockHistory.API.Controllers.ConsultTickerController.PostSearchDetail(StockHistory.Models.TickerDetail)">
              <summary>
              Get a specific ticker.
              </summary>
@@ -115,6 +115,18 @@
             Get a specific register.
             </summary>
             <param name="id"></param>   
+        </member>
+        <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.GetPurchasesHistoricByTicker(System.String)">
+            <summary>
+            Get a specific register by Ticker name.
+            </summary>
+            <param name="ticker"></param>   
+        </member>
+        <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.GetPurchasesHistoricTickerTaticList(System.String)">
+            <summary>
+            Get a specific register by Ticker name.
+            </summary>
+            <param name="ticker"></param>   
         </member>
         <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.PutPurchasesHistoric(System.Int32,StockHistory.Models.PurchasesHistoric)">
              <summary>

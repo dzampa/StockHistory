@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StockHistory.Models.Models
+namespace StockHistory.Models
 {
     public class TickerDetail
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StockHistory.Models.Models
+namespace StockHistory.Models
 {
     public partial class TickerSearchDetail
     {
