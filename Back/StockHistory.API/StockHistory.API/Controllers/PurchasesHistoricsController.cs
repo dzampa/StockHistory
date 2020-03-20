@@ -92,6 +92,31 @@ namespace StockHistory.API.Controllers
                                                                          "    Ticker"
                                                                          ).ToListAsync();
 
+            #region pqnaofunfa
+            /*var y = await _context.PurchasesHistoric
+                .Where(g => g.TpNegocio == "C" && g.Ticker.Contains(ticker))
+                .Select(p => new { 
+                    p.Ticker,
+                    p.DescTicker,
+                    p.Quantidade,
+                    p.Preco
+                })
+                .OrderBy(g => g.Ticker)
+                .GroupBy(g => new { 
+                    g.Ticker,
+                    g.DescTicker
+                })
+                .Select(y => new
+                {
+                    Ticker = y.Select(s => s.Ticker),
+                    DescTicker = y.Select(s => s.DescTicker),
+                    Qnt = y.Sum(s => s.Quantidade),
+                    Custo = y.Sum(s => s.Preco * s.Quantidade),
+                    PrcMedio = y.Sum(s => s.Preco * s.Quantidade) / y.Sum(s => s.Quantidade)
+                })
+                .ToListAsync() ;*/
+            #endregion
+
             var SellHistoric = await _context.TickerTaticHistoric.FromSqlRaw(
                                                                          "SELECT DISTINCT " +
                                                                          "    Ticker " +
