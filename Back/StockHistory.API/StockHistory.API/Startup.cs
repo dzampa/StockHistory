@@ -9,7 +9,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using StockHistory.Data;
-using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -121,8 +120,8 @@ namespace StockHistory.API
                                 Type = ReferenceType.SecurityScheme,
                                 Id = "Bearer"
                             },
-                            Scheme = "oauth2",
-                            Name = "Bearer",
+                            Scheme = "Bearer",
+                            Name = "Authorization",
                             In = ParameterLocation.Header,
 
                         },
