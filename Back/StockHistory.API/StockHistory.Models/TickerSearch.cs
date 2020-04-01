@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using Newtonsoft.Json;
 
 namespace StockHistory.Models
 {
     public class TickerSearch
     {
-        [Required]
-        [StringLength(100)]
-        public string text { get; set; }
-        [StringLength(100)]
-        public string exchange { get; set; }
-        [StringLength(100)]
-        public string type { get; set; }
-        [Required]
-        [StringLength(100)]
-        public string hl { get; set; }
-        [Required]
-        [StringLength(100)]
-        public string lang { get; set; }
-        [Required]
-        [StringLength(100)]
-        public string domain { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
+        [JsonProperty("exchange")]
+        public string Exchange { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
+        [JsonProperty("hl")]
+        public string HL { get; set; }
+        [JsonProperty("lang")]
+        public string Lang { get; set; }
+        [JsonProperty("domain")]
+        public string Domain { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace StockHistory.Data
 
         public DbSet<PurchasesHistoric> PurchasesHistoric { get; set; }
         public DbSet<TickerTaticHistoric> TickerTaticHistoric { get; set; }
+        public DbSet<User> User { get; set; }
     }
 
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using StockHistory.Models;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -36,13 +38,18 @@ namespace StockHistory.API.Controllers
         /// <param name="tickerSearch"></param>
         /// <returns>A list of Ticker</returns>
         /// <response code="201">Returns a list of Ticker</response>
-        /// <response code="400">If the item is null</response> 
+        /// <response code="400">If the item is null</response>
+        /// <response code="401">Unauthorized</response>  
+        [Authorize("Bearer")]
         [Route("/TickerList")]
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<List<TickerListDetail>> PostTickerListDatail(TickerSearch tickerSearch)
         {
-            var tURL = $"{TickerListAddress}text={tickerSearch.text}&exchange={tickerSearch.exchange}&type={tickerSearch.type}" +
-                $"&hl={tickerSearch.hl}&lang={tickerSearch.lang}&domain={tickerSearch.domain}";
+            var tURL = $"{TickerListAddress}text={tickerSearch.Text}&exchange={tickerSearch.Exchange}&type={tickerSearch.Type}" +
+                $"&hl={tickerSearch.HL}&lang={tickerSearch.Lang}&domain={tickerSearch.Domain}";
 
             List<TickerListDetail> tickerLists = new List<TickerListDetail>();
 
@@ -131,8 +138,13 @@ namespace StockHistory.API.Controllers
         /// <returns>A list of Ticker</returns>
         /// <response code="201">Returns a list of Ticker</response>
         /// <response code="400">If the item is null</response> 
+        /// <response code="401">Unauthorized</response> 
+        [Authorize("Bearer")]
         [Route("/TickerDetail")]
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<TickerSearchDetail> PostSearchDetail(TickerDetail tickerDetail)
         {
             var tURL = $"{TickerDetailAddress}";

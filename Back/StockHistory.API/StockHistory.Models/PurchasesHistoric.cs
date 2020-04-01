@@ -8,18 +8,19 @@ namespace StockHistory.Models
     public class PurchasesHistoric
     {
         [Key]
-        public int PurchasesHistoricId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public decimal IdPurchasesHistoric { get; set; }
         [Required]
         [StringLength(100)]
-        public DateTime DtNegocio { get; set; }
+        public DateTime DtBusiness { get; set; }
         [Required]
         [StringLength(5)]
-        public string TpNegocio { get; set; }
+        public string TpBusiness { get; set; }
         [Required]
         [StringLength(100)]
-        public string TpMercado { get; set; }
+        public string TpMarket { get; set; }
         [StringLength(10)]
-        public DateTime? DtPrzVcto { get; set; }
+        public DateTime? DtExp { get; set; }
         [Required]
         [StringLength(5)]
         public string Ticker { get; set; }
@@ -27,13 +28,13 @@ namespace StockHistory.Models
         [StringLength(100)]
         public string DescTicker { get; set; }
         [Required]
-        public int Quantidade { get; set; }
+        public int Amount { get; set; }
         [Required]
-        public decimal Preco { get; set; }
+        public decimal Price { get; set; }
         [Required]
-        public decimal ValorTot { get; set; }
-        public int? FatorCotacao { get; set; }
+        public decimal TotValue { get; set; }
+        public int? QutFac { get; set; }
         [Required]
-        public int IdCorretora { get; set; }
+        public int IdBroker { get; set; }
     }
 }

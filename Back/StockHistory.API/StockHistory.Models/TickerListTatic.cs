@@ -9,18 +9,18 @@ namespace StockHistory.Models
         [StringLength(100)]
         public string DescTicker { get; set; }
         [Required]
-        public int QtdeCompra { get; set; }
+        public int PurchaseAmt { get; set; }
         [Required]
-        public int QtdeVenda { get; set; }
+        public int SaleAmt { get; set; }
         [Required]
-        public decimal ValorCompra { get; set; }
+        public decimal PurchasePrc { get; set; }
         [Required]
-        public decimal ValorVenda { get; set; }
+        public decimal SalePrc { get; set; }
         [Required]
-        public decimal ValorMedCompra { get; set; }
+        public decimal AverPurcAmt { get; set; }
         [Required]
-        public decimal ValorMedVenda { get; set; }
+        public decimal AverSaleAmt { get; set; }
         [Required]
-        public int QtdeLiq { get; set; }
+        public int NetAmt { get; set; }
     }
 }

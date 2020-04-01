@@ -25,7 +25,8 @@
              <param name="tickerSearch"></param>
              <returns>A list of Ticker</returns>
              <response code="201">Returns a list of Ticker</response>
-             <response code="400">If the item is null</response> 
+             <response code="400">If the item is null</response>
+             <response code="401">Unauthorized</response>  
         </member>
         <member name="M:StockHistory.API.Controllers.ConsultTickerController.PostSearchDetail(StockHistory.Models.TickerDetail)">
              <summary>
@@ -104,29 +105,53 @@
              <returns>A list of Ticker</returns>
              <response code="201">Returns a list of Ticker</response>
              <response code="400">If the item is null</response> 
+             <response code="401">Unauthorized</response> 
+        </member>
+        <member name="M:StockHistory.API.Controllers.LoginController.LoginPost(System.Decimal,System.String,Util.SigningConfigurations,Util.TokenConfigurations)">
+            <summary>
+            Get a user to login.
+            </summary>
+            <param name="CPF"></param>
+            <param name="Pass"></param>
+            <returns>Return login validation</returns>
+            <response code="200">Returns a list of Ticker</response>
+            <response code="400">Invalid Password</response> 
+            <response code="404">User not found</response> 
+            <response code="500">Internal Error</response> 
         </member>
         <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.GetPurchasesHistoric">
             <summary>
             Get all Historics  
             </summary> 
+            <response code="200">Ok</response> 
+            <response code="401">Unauthorized</response> 
         </member>
-        <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.GetPurchasesHistoric(System.Int32)">
+        <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.GetPurchasesHistoric(System.Decimal)">
             <summary>
             Get a specific register.
             </summary>
-            <param name="id"></param>   
+            <param name="id"></param> 
+            <response code="200">Ok</response> 
+            <response code="400">BadRequest</response>  
+            <response code="401">Unauthorized</response>   
         </member>
         <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.GetPurchasesHistoricByTicker(System.String)">
             <summary>
             Get a specific register by Ticker name.
             </summary>
-            <param name="ticker"></param>   
+            <param name="ticker"></param> 
+            <response code="200">Ok</response> 
+            <response code="400">BadRequest</response>  
+            <response code="401">Unauthorized</response>   
         </member>
         <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.GetPurchasesHistoricTickerTaticList(System.String)">
             <summary>
             Get a specific register by Ticker name.
             </summary>
             <param name="ticker"></param>   
+            <response code="200">Ok</response> 
+            <response code="400">BadRequest</response>  
+            <response code="401">Unauthorized</response>   
         </member>
         <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.PutPurchasesHistoric(System.Int32,StockHistory.Models.PurchasesHistoric)">
              <summary>
@@ -157,6 +182,7 @@
              <returns>A newly created TodoItem</returns>
              <response code="201">Returns the newly created item</response>
              <response code="400">If the item is null</response> 
+             <response code="401">Unauthorized</response>   
         </member>
         <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.PostPurchasesHistoric(StockHistory.Models.PurchasesHistoric)">
              <summary>
@@ -185,13 +211,59 @@
              <param name="purchasesHistoric"></param>
              <returns>A newly created</returns>
              <response code="201">Returns the newly created item</response>
-             <response code="400">If the item is null</response> 
+             <response code="400">Unauthorized</response>
+             <response code="401">If the item is null</response> 
         </member>
         <member name="M:StockHistory.API.Controllers.PurchasesHistoricsController.DeletePurchasesHistoric(System.Int32)">
             <summary>
             Deletes a specific Register.
             </summary>
-            <param name="id"></param>  
+            <param name="id"></param> 
+            <response code="201">OK</response>
+            <response code="400">Unauthorized</response>
+            <response code="401">If the item is null</response>  
+        </member>
+        <member name="M:StockHistory.API.Controllers.UserController.PostUser(StockHistory.Models.User)">
+             <summary>
+             User register.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /purchasesHistoric
+                 {
+                   "Name": 'Diego',
+                   "CPF": "35925713893",
+                   "Password": "123qwe!@"
+                 }
+            
+             </remarks>
+             <param name="userData"></param>
+             <returns>A User as created</returns>
+             <response code="200">Returns the User created item</response>
+             <response code="400">This CPF as been registered</response>
+             <response code="500">Server Error</response>
+        </member>
+        <member name="M:StockHistory.API.Controllers.UserController.PutUser(System.Int32,StockHistory.Models.UserPassword)">
+             <summary>
+             Update a password an specific register.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 PUT /purchasesHistoric
+                 {
+                   "idUser" : 1
+                   "Password": "123qwe!@"
+                 }
+            
+             </remarks>
+             <param name="id"></param>
+             <param name="userPass"></param>
+             <response code="204">Returns the newly created item</response>
+             <response code="400">User not fond</response> 
+             <response code="401">Unauthorized</response> 
+             <response code="500">Server error</response> 
         </member>
     </members>
 </doc>
