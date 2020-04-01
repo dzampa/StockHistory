@@ -1,0 +1,145 @@
+USE [StockHistory]
+GO
+ALTER TABLE [dbo].[PurchasesHistoric] DROP CONSTRAINT [FK_PurchasesHistoric_User]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 01/04/2020 17:37:17 ******/
+DROP TABLE [dbo].[User]
+GO
+/****** Object:  Table [dbo].[PurchasesHistoric]    Script Date: 01/04/2020 17:37:17 ******/
+DROP TABLE [dbo].[PurchasesHistoric]
+GO
+USE [master]
+GO
+/****** Object:  Database [StockHistory]    Script Date: 01/04/2020 17:37:17 ******/
+DROP DATABASE [StockHistory]
+GO
+/****** Object:  Database [StockHistory]    Script Date: 01/04/2020 17:37:17 ******/
+CREATE DATABASE [StockHistory]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'StockHistory', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\StockHistory.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'StockHistory_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\StockHistory_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [StockHistory] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [StockHistory].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [StockHistory] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [StockHistory] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [StockHistory] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [StockHistory] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [StockHistory] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [StockHistory] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [StockHistory] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [StockHistory] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [StockHistory] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [StockHistory] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [StockHistory] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [StockHistory] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [StockHistory] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [StockHistory] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [StockHistory] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [StockHistory] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [StockHistory] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [StockHistory] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [StockHistory] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [StockHistory] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [StockHistory] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [StockHistory] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [StockHistory] SET RECOVERY FULL 
+GO
+ALTER DATABASE [StockHistory] SET  MULTI_USER 
+GO
+ALTER DATABASE [StockHistory] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [StockHistory] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [StockHistory] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [StockHistory] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [StockHistory] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'StockHistory', N'ON'
+GO
+ALTER DATABASE [StockHistory] SET QUERY_STORE = OFF
+GO
+USE [StockHistory]
+GO
+/****** Object:  Table [dbo].[PurchasesHistoric]    Script Date: 01/04/2020 17:37:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PurchasesHistoric](
+	[IdPurchasesHistoric] [decimal](18, 0) IDENTITY(1,1) NOT NULL,
+	[idUser] [decimal](18, 0) NOT NULL,
+	[DtBusiness] [datetime] NOT NULL,
+	[TpBusiness] [varchar](5) NOT NULL,
+	[TpMarket] [varchar](100) NOT NULL,
+	[DtExp] [datetime] NULL,
+	[Ticker] [varchar](10) NOT NULL,
+	[DescTicker] [varchar](100) NOT NULL,
+	[Amount] [int] NOT NULL,
+	[Price] [decimal](18, 2) NOT NULL,
+	[TotValue] [decimal](18, 2) NOT NULL,
+	[QutFac] [int] NULL,
+	[IdBroker] [int] NOT NULL,
+ CONSTRAINT [PK_Ana$] PRIMARY KEY CLUSTERED 
+(
+	[IdPurchasesHistoric] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 01/04/2020 17:37:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[idUser] [decimal](18, 0) IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](100) NOT NULL,
+	[CPF] [decimal](11, 0) NOT NULL,
+	[Password] [varchar](100) NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[idUser] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[PurchasesHistoric]  WITH CHECK ADD  CONSTRAINT [FK_PurchasesHistoric_User] FOREIGN KEY([idUser])
+REFERENCES [dbo].[User] ([idUser])
+GO
+ALTER TABLE [dbo].[PurchasesHistoric] CHECK CONSTRAINT [FK_PurchasesHistoric_User]
+GO
+USE [master]
+GO
+ALTER DATABASE [StockHistory] SET  READ_WRITE 
+GO
