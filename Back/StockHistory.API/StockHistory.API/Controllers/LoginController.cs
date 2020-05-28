@@ -44,8 +44,10 @@ namespace StockHistory.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<LoginModel> LoginPost( decimal CPF, string Pass,
+#pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
             [FromServices]SigningConfigurations signingConfigurations,
             [FromServices]TokenConfigurations tokenConfigurations)
+#pragma warning restore CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
         {
 
             User user = _context.User.Where(x => x.CPF.Equals(CPF)).FirstOrDefault();
