@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using Util;
 
 namespace StockHistory.API
@@ -168,6 +169,11 @@ namespace StockHistory.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.Run(context => {
+                context.Response.Redirect("swagger");
+                return Task.CompletedTask;
+            });
 
             app.UseEndpoints(endpoints =>
             {
